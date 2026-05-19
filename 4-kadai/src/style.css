@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f4f4f4;
+  color: #333333;
+}
+
+.container {
+  width: 90%;
+  max-width: 720px;
+  margin: 40pxauto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.card {
+  padding: 20px;
+  margin-bottom: 16px;
+  border: 1pxsolid #cccccc;
+  border-radius: 12px;
+  background-color: #ffffff;
+}
+
+.cardh2 {
+  margin-top: 0;
+  color: #1e40af;
+}
+
+.cardp {
+  line-height: 1.6;
+}
