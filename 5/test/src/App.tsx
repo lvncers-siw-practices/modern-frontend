@@ -1,16 +1,39 @@
-import "./App.css";
+import { useState } from "react";
 
 function App() {
-  function handleSelect(name: string) {
-    console.log(`${name}が選択されました`);
-  }
+  const [activeTab, setActiveTab] = useState("overview");
 
   return (
-    <div>
-      <button onClick={() => handleSelect("A商品")}>A商品</button>
-      <button onClick={() => handleSelect("B商品")}>B商品</button>
-      <button onClick={() => handleSelect("C商品")}>C商品</button>
-    </div>
+    <main>
+      <h1>授業情報</h1>
+
+      <div>
+        <button onClick={() => setActiveTab("overview")}>概要</button>
+        <button onClick={() => setActiveTab("content")}>学習内容</button>
+        <button onClick={() => setActiveTab("notice")}>注意事項</button>
+      </div>
+
+      {activeTab === "overview" && (
+        <section>
+          <h2>概要</h2>
+          <p>この授業ではReactとTypeScriptの基礎を学習します。</p>
+        </section>
+      )}
+
+      {activeTab === "content" && (
+        <section>
+          <h2>学習内容</h2>
+          <p>コンポーネント、props、state、イベント処理を扱います。</p>
+        </section>
+      )}
+
+      {activeTab === "notice" && (
+        <section>
+          <h2>注意事項</h2>
+          <p>コードは実際に動かしながら確認してください。</p>
+        </section>
+      )}
+    </main>
   );
 }
 
