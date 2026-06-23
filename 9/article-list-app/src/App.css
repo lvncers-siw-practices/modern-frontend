@@ -64,6 +64,18 @@ body {
   border-color: #6b93c4;
 }
 
+.message {
+  text-align: center;
+  font-size: 20px;
+  color: #3d5a80;
+}
+
+.error {
+  text-align: center;
+  color: #dc2626;
+  font-weight: bold;
+}
+
 .result-count {
   margin: 0 0 24px;
   color: #5c6f87;

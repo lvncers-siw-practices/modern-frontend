@@ -15,11 +15,17 @@ function App() {
   const [articleList, setArticleList] = useState<Article[]>([]);
   const [searchText, setSearchText] = useState("");
   const [selectedUserId, setSelectedUserId] = useState(ALL_USERS);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  const userIds = [...new Set(articleList.map((article) => article.userId))].sort(
-    (a, b) => a - b,
-  );
+  // ユーザーID絞り込み
+  // ユーザーIDを配列に変換して、重複を削除して、ソートする
+  const userIds = [
+    ...new Set(articleList.map((article) => article.userId)),
+  ].sort((a, b) => a - b);
 
+  // 検索ワード絞り込み
+  // タイトルに検索ワードが含まれている記事を抽出
   const filteredArticleList = articleList
     .filter((article) => {
       return article.title.toLowerCase().includes(searchText.toLowerCase());
@@ -31,11 +37,16 @@ function App() {
 
       return article.userId === Number(selectedUserId);
     })
+    // 10件制限
     .slice(0, DISPLAY_LIMIT);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => {
+        if (!response.ok) {
+          throw new Error("データの取得に失敗しました");
+        }
+
         return response.json();
       })
       .then((data) => {
@@ -46,6 +57,11 @@ function App() {
       })
       .then((articleData) => {
         setArticleList(articleData);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setError("データの取得に失敗しました");
+        setIsLoading(false);
       });
   }, []);
 
@@ -58,48 +74,55 @@ function App() {
       </header>
 
       <main className="container">
-        <div className="controls">
-          <input
-            className="search-input"
-            type="text"
-            placeholder="タイトルで検索"
-            value={searchText}
-            onChange={(event) => {
-              setSearchText(event.target.value);
-            }}
-          />
+        {isLoading && <p className="message">読み込み中...</p>}
+        {error && <p className="error">{error}</p>}
 
-          <select
-            className="user-filter"
-            value={selectedUserId}
-            onChange={(event) => {
-              setSelectedUserId(event.target.value);
-            }}
-          >
-            <option value={ALL_USERS}>すべてのユーザー</option>
-            {userIds.map((userId) => (
-              <option key={userId} value={userId}>
-                ユーザー ID: {userId}
-              </option>
-            ))}
-          </select>
-        </div>
+        {!isLoading && !error && (
+          <>
+            <div className="controls">
+              <input
+                className="search-input"
+                type="text"
+                placeholder="タイトルで検索"
+                value={searchText}
+                onChange={(event) => {
+                  setSearchText(event.target.value);
+                }}
+              />
 
-        <p className="result-count">
-          表示件数: {filteredArticleList.length} / {DISPLAY_LIMIT} 件
-        </p>
+              <select
+                className="user-filter"
+                value={selectedUserId}
+                onChange={(event) => {
+                  setSelectedUserId(event.target.value);
+                }}
+              >
+                <option value={ALL_USERS}>すべてのユーザー</option>
+                {userIds.map((userId) => (
+                  <option key={userId} value={userId}>
+                    ユーザー ID: {userId}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-        <div className="article-grid">
-          {filteredArticleList.map((article) => (
-            <article className="article-card" key={article.id}>
-              <p className="article-number">No.{article.id}</p>
-              <p className="article-user-id">User ID: {article.userId}</p>
+            <p className="result-count">
+              表示件数: {filteredArticleList.length} / {DISPLAY_LIMIT} 件
+            </p>
 
-              <h2>{article.title}</h2>
-              <p className="article-body">{article.body}</p>
-            </article>
-          ))}
-        </div>
+            <div className="article-grid">
+              {filteredArticleList.map((article) => (
+                <article className="article-card" key={article.id}>
+                  <p className="article-number">No.{article.id}</p>
+                  <p className="article-user-id">User ID: {article.userId}</p>
+
+                  <h2>{article.title}</h2>
+                  <p className="article-body">{article.body}</p>
+                </article>
+              ))}
+            </div>
+          </>
+        )}
       </main>
     </div>
   );
