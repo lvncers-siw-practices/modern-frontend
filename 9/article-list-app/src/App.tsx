@@ -19,7 +19,7 @@ function App() {
   const [error, setError] = useState("");
 
   // ユーザーID絞り込み
-  // ユーザーIDを配列に変換して、重複を削除して、ソートする
+  // 指定されたユーザーIDが一致する記事をオブジェクトの配列に変換して、重複を削除して、ソートする
   const userIds = [
     ...new Set(articleList.map((article) => article.userId)),
   ].sort((a, b) => a - b);
@@ -30,11 +30,12 @@ function App() {
     .filter((article) => {
       return article.title.toLowerCase().includes(searchText.toLowerCase());
     })
+    // ALL_USERSの場合はすべての記事を表示
     .filter((article) => {
       if (selectedUserId === ALL_USERS) {
         return true;
       }
-
+      // 指定されたユーザーIDが一致する記事を表示
       return article.userId === Number(selectedUserId);
     })
     // 10件制限
