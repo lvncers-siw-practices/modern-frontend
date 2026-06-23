@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 type Pokemon = {
+  id: number;
   name: string;
-  url: string;
+  image: string;
 };
 
 function App() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+  const [searchText, setSearchText] = useState("");
+
+  const filteredPokemonList = pokemonList.filter((pokemon) => {
+    return pokemon.name.includes(searchText.toLowerCase());
+  });
 
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
@@ -29,7 +35,10 @@ function App() {
             });
         });
 
-        console.log(requests);
+        return Promise.all(requests);
+      })
+      .then((pokemonData) => {
+        setPokemonList(pokemonData);
       });
   }, []);
 
@@ -46,7 +55,23 @@ function App() {
           className="search-input"
           type="text"
           placeholder="ポケモン名で検索"
+          value={searchText}
+          onChange={(event) => {
+            setSearchText(event.target.value);
+          }}
         />
+
+        <div className="pokemon-grid">
+          {filteredPokemonList.map((pokemon) => (
+            <div className="pokemon-card" key={pokemon.id}>
+              <p className="pokemon-number">No.{pokemon.id}</p>
+
+              <img src={pokemon.image} alt={pokemon.name} />
+
+              <h2>{pokemon.name}</h2>
+            </div>
+          ))}
+        </div>
       </main>
     </div>
   );
