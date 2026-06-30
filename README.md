@@ -1,9 +1,10 @@
 # Modern React
 
-[https://wirehaired-cinema-259.notion.site/32d84230c2b281da8bd0dd1a76a60c86](https://wirehaired-cinema-259.notion.site/32d84230c2b281da8bd0dd1a76a60c86)
+[https://wirehaired-cinema-259.notion.site](https://wirehaired-cinema-259.notion.site/32d84230c2b281da8bd0dd1a76a60c86)
 
 ## 目次
 
+- [第 10 回](/10/)
 - [第 9 回](/9/)
 - [第 8 回](/8/)
 - [第 6 回](/6/)
@@ -12,6 +13,15 @@
 - [第 3 回](/3/)
 
 ## 各回目標
+
+### 第 10 回
+
+- コンポーネントを分割する目的を説明できる
+- 「どこを分割するべきか」を判断できる
+- 分けすぎによる問題点を説明できる
+- App.tsxにまとめられたコードを適切に分割できる
+- `components`、`data`、`types` に整理できる
+- `useRef` を利用してDOM要素を直接操作できる
 
 ### 第 9 回
 
