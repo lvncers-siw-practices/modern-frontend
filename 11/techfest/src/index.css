@@ -1,0 +1,795 @@
+:root {
+  color: #1f2937;
+  background: #ffffff;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic",
+    "YuGothic", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #ffffff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.container {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid #e5e7eb;
+  backdrop-filter: blur(8px);
+}
+
+.header-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+}
+
+.site-logo-mark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background: #2563eb;
+  border-radius: 10px;
+  font-size: 1.25rem;
+}
+
+.site-logo-main,
+.site-logo-sub {
+  display: block;
+  line-height: 1.1;
+}
+
+.site-logo-main {
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.site-logo-sub {
+  margin-top: 2px;
+  color: #2563eb;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+}
+
+.global-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.global-nav a {
+  color: #374151;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.global-nav a:hover {
+  color: #2563eb;
+}
+
+/* ボタン */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-weight: 800;
+  transition:
+    transform 0.2s,
+    background-color 0.2s,
+    color 0.2s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary {
+  color: #ffffff;
+  background: #2563eb;
+}
+
+.button-primary:hover {
+  background: #1d4ed8;
+}
+
+.button-outline {
+  color: #1d4ed8;
+  border-color: #2563eb;
+  background: #ffffff;
+}
+
+.button-outline:hover {
+  color: #ffffff;
+  background: #2563eb;
+}
+
+.button-light {
+  color: #1d4ed8;
+  background: #ffffff;
+}
+
+/* トップページ */
+
+.hero {
+  overflow: hidden;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(96, 165, 250, 0.5),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #111827, #1d4ed8);
+}
+
+.hero-inner {
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.hero-label,
+.section-label {
+  margin: 0 0 12px;
+  color: #2563eb;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.hero-label {
+  color: #bfdbfe;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+}
+
+.hero-text {
+  margin: 28px 0;
+  color: #dbeafe;
+  font-size: 1rem;
+  line-height: 1.9;
+}
+
+.hero-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.hero-info p {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 170px;
+  margin: 0;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.hero-info span {
+  color: #bfdbfe;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
+/* セクション共通 */
+
+.section,
+.page-section {
+  padding: 88px 0;
+}
+
+.section-gray {
+  background: #f3f4f6;
+}
+
+.section-heading,
+.page-heading {
+  max-width: 680px;
+  margin-bottom: 40px;
+}
+
+.section-heading h2,
+.page-heading h1 {
+  margin: 0;
+  color: #111827;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.25;
+}
+
+.section-heading > p:last-child,
+.page-heading > p:last-child {
+  margin: 16px 0 0;
+  color: #6b7280;
+  line-height: 1.8;
+}
+
+.section-button {
+  margin-top: 36px;
+  text-align: center;
+}
+
+/* イベントカード */
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.event-card {
+  overflow: hidden;
+  display: flex;
+  min-height: 280px;
+  flex-direction: column;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.06);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.14);
+}
+
+.event-card-icon {
+  min-height: 100px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff);
+  font-size: 3rem;
+}
+
+.event-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+}
+
+.event-card-category,
+.event-detail-category {
+  margin: 0 0 8px;
+  color: #2563eb;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.event-card h3 {
+  margin: 0;
+  color: #111827;
+  font-size: 1.2rem;
+}
+
+.event-card-copy {
+  margin: 12px 0;
+  color: #6b7280;
+  line-height: 1.7;
+}
+
+.event-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: auto;
+  color: #4b5563;
+  font-size: 0.84rem;
+}
+
+.event-card-link {
+  margin-top: 18px;
+  color: #2563eb;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+/* 特徴 */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.feature-card {
+  padding: 28px;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.feature-number {
+  margin: 0;
+  color: #93c5fd;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.feature-card h3 {
+  margin: 14px 0 10px;
+  color: #111827;
+  font-size: 1.2rem;
+}
+
+.feature-card p:last-child {
+  margin: 0;
+  color: #6b7280;
+  line-height: 1.8;
+}
+
+/* 下部案内 */
+
+.callout {
+  padding: 72px 0;
+  color: #ffffff;
+  background: #1d4ed8;
+}
+
+.callout-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.callout .section-label {
+  color: #bfdbfe;
+}
+
+.callout h2 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.callout p:last-child {
+  margin: 16px 0 0;
+  color: #dbeafe;
+  line-height: 1.8;
+}
+
+/* 詳細ページ */
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 28px;
+  color: #2563eb;
+  font-weight: 800;
+}
+
+.event-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 48px;
+}
+
+.event-detail-main {
+  min-width: 0;
+}
+
+.event-detail-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.event-detail-title > span {
+  width: 88px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #dbeafe;
+  font-size: 3rem;
+}
+
+.event-detail-title h1 {
+  margin: 0;
+  color: #111827;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.event-detail-title p {
+  margin: 8px 0 0;
+  color: #6b7280;
+}
+
+.event-detail-description {
+  margin: 32px 0;
+  color: #4b5563;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.event-detail-section {
+  padding-top: 28px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.event-detail-section h2,
+.event-info-card h2,
+.about-section h2,
+.access-info h2 {
+  margin: 0 0 18px;
+  color: #111827;
+  font-size: 1.35rem;
+}
+
+.content-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.content-list li {
+  position: relative;
+  padding: 14px 14px 14px 38px;
+  border-radius: 10px;
+  background: #eff6ff;
+  color: #374151;
+}
+
+.content-list li::before {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  color: #2563eb;
+  content: "✓";
+  font-weight: 800;
+}
+
+.event-info-card {
+  height: fit-content;
+  padding: 28px;
+  border-radius: 18px;
+  background: #f3f4f6;
+}
+
+.event-info-card dl,
+.overview-list {
+  margin: 0;
+}
+
+.event-info-card dl > div,
+.overview-list > div {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.event-info-card dt,
+.overview-list dt {
+  color: #6b7280;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.event-info-card dd,
+.overview-list dd {
+  margin: 0;
+  color: #1f2937;
+  line-height: 1.6;
+}
+
+.event-info-card .button {
+  width: 100%;
+  margin-top: 24px;
+}
+
+/* 開催概要 */
+
+.about-lead {
+  max-width: 780px;
+  margin-bottom: 56px;
+  color: #374151;
+  font-size: 1.05rem;
+  line-height: 2;
+}
+
+.about-section {
+  margin-top: 48px;
+}
+
+.schedule-list {
+  border-top: 1px solid #d1d5db;
+}
+
+.schedule-item {
+  display: grid;
+  grid-template-columns: 100px minmax(0, 1fr);
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.schedule-item time {
+  color: #2563eb;
+  font-weight: 800;
+}
+
+.schedule-item p {
+  margin: 0;
+  color: #374151;
+}
+
+/* アクセス */
+
+.access-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+.access-map {
+  position: relative;
+  min-height: 360px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  color: #1e3a8a;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.7) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.7) 1px, transparent 1px), #bfdbfe;
+  background-size: 40px 40px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.access-map::before {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  border: 28px solid #60a5fa;
+  border-radius: 50%;
+  content: "";
+}
+
+.access-map p,
+.access-map span {
+  position: relative;
+  z-index: 1;
+}
+
+.access-map p {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.access-map span {
+  position: absolute;
+  top: 60%;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: #2563eb;
+  font-size: 0.85rem;
+}
+
+.access-note {
+  margin-top: 32px;
+  padding: 22px;
+  border-radius: 16px;
+  background: #eff6ff;
+}
+
+.access-note h3 {
+  margin: 0 0 12px;
+  color: #1e3a8a;
+  font-size: 1rem;
+}
+
+.access-note ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 20px;
+  color: #374151;
+  line-height: 1.7;
+}
+
+/* 404ページ */
+
+.not-found {
+  padding: 120px 0;
+  text-align: center;
+}
+
+.not-found-code {
+  margin: 0;
+  color: #bfdbfe;
+  font-size: clamp(5rem, 15vw, 10rem);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.not-found h1 {
+  margin: 12px 0;
+  color: #111827;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.not-found > .container > p:not(.not-found-code) {
+  margin: 0 0 28px;
+  color: #6b7280;
+  line-height: 1.8;
+}
+
+/* フッター */
+
+.site-footer {
+  padding: 28px 0;
+  color: #d1d5db;
+  background: #111827;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer-inner p {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+/* 画面幅が狭い場合の表示 */
+
+@media (max-width: 800px) {
+  .header-inner {
+    min-height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 0;
+  }
+
+  .global-nav {
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  .hero-inner {
+    min-height: 500px;
+  }
+
+  .event-grid,
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .callout-inner,
+  .event-detail,
+  .access-layout {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .event-info-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .section,
+  .page-section {
+    padding: 64px 0;
+  }
+
+  .global-nav {
+    gap: 12px;
+    font-size: 0.85rem;
+  }
+
+  .hero-text br {
+    display: none;
+  }
+
+  .event-detail-title {
+    align-items: flex-start;
+  }
+
+  .event-detail-title > span {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    font-size: 2rem;
+  }
+
+  .event-info-card dl > div,
+  .overview-list > div,
+  .schedule-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+  }
+}
