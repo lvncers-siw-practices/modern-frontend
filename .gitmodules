@@ -2,3 +2,7 @@
 	path = .cursor
 	url = git@github.com:lvncers-template/ai-configs.git
 	branch = cursor-export
+[submodule ".claude"]
+	path = .claude
+	url = git@github.com:lvncers-template/ai-configs.git
+	branch = claude-export
