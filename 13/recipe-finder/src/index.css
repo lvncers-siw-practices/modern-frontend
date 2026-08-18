@@ -119,6 +119,46 @@ a {
   background-color: #327646;
 }
 
+.filter-search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.filter-search__field {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 160px;
+}
+
+.filter-search__label {
+  color: #6f625b;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.filter-search__select {
+  padding: 10px 12px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #cdbdb1;
+  border-radius: 10px;
+}
+
+.todays-picks {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #eadfd5;
+}
+
+.todays-picks__heading {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+}
+
 .search-page__message,
 .detail-page__message,
 .favorites-page__message {

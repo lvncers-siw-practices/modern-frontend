@@ -59,3 +59,21 @@ export type Ingredient = {
   name: string;
   measure: string;
 };
+
+export type MealSummary = {
+  idMeal: string;
+  strMeal: string;
+  strMealThumb: string;
+};
+
+export type MealFilterResponse = {
+  meals: MealSummary[] | null;
+};
+
+export type CategoryListResponse = {
+  meals: { strCategory: string }[] | null;
+};
+
+export type AreaListResponse = {
+  meals: { strArea: string }[] | null;
+};

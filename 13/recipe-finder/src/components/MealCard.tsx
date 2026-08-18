@@ -1,8 +1,8 @@
 import { Link } from "react-router";
-import type { Meal } from "../types/meal";
+import type { MealSummary } from "../types/meal";
 
 type MealCardProps = {
-  meal: Meal;
+  meal: MealSummary;
   onRemove?: (id: string) => void;
 };
 

@@ -1,8 +1,8 @@
-import type { Meal } from "../types/meal";
+import type { MealSummary } from "../types/meal";
 import MealCard from "./MealCard";
 
 type MealListProps = {
-  meals: Meal[];
+  meals: MealSummary[];
   onRemove?: (id: string) => void;
 };
 
